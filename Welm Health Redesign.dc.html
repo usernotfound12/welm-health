@@ -3204,7 +3204,12 @@ class Component extends DCLogic {
     const textareaStyle=inputStyle+'margin-top:20px;min-height:110px;resize:vertical;line-height:1.5;';
 
     const PH=(id)=>((typeof window!=='undefined'&&window.WELM_PHOTOS&&window.WELM_PHOTOS[id])||'');
-    const treatments=this.treatmentsData.map(t=>{
+    const featuredFirst=['tirzepatide','nad'];
+    const orderedTreatments=this.treatmentsData.slice().sort((a,b)=>{
+      const ai=featuredFirst.indexOf(a.id), bi=featuredFirst.indexOf(b.id);
+      return (ai<0?99:ai)-(bi<0?99:bi);
+    });
+    const treatments=orderedTreatments.map(t=>{
       const inCart=!!S.cart.find(c=>c.id===t.id);
       const baseProg=t.programsOrder[0]; const baseM=t.plans[baseProg].m;
       const multi=t.programsOrder.length>1;
