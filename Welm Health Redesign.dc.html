@@ -50,7 +50,8 @@ button,a,[role=button]{touch-action:manipulation}
 @media (max-width:600px){[data-vial-grid]{grid-template-columns:1fr!important}}
 @media (max-width:760px){
 [data-ql-layout]{flex-direction:column!important}
-[data-ql-media]{width:100%!important;height:34%!important;flex:none!important}
+[data-ql-media]{width:100%!important;height:auto!important;aspect-ratio:4/5!important;flex:none!important}
+[data-ql-photo]{object-fit:cover!important;object-position:50% 30%!important}
 }
 [data-progcard][data-sel="true"],[data-plancard][data-sel="true"]{border-color:#47181C!important;box-shadow:inset 0 0 0 2px #47181C, 0 14px 34px rgba(71,24,28,.15)!important;background:#FFFDFA!important}
 [data-progcard][data-sel="true"] > div:first-child,[data-plancard][data-sel="true"] [data-planband]{background:#47181C!important;border-bottom-color:#47181C!important}
@@ -86,11 +87,17 @@ button,a,[role=button]{touch-action:manipulation}
 [data-navmark]{order:1!important;flex:1 1 auto!important;justify-content:flex-start!important}
 [data-h-actions]{order:2!important;flex:none!important}
 [data-h-cart]{display:none!important}
-[data-path-tree]{display:none!important}
 [data-footlinks]{gap:0!important}
-#contact{padding-top:clamp(40px,7vw,64px)!important}
-#contact > div > div:first-child{gap:6px 20px!important}
-#contact [data-footlegal]{display:none!important}
+#contact{padding:clamp(46px,8vw,72px) 22px 34px!important}
+#contact > div > div:first-child{gap:22px 18px!important;padding-bottom:26px!important}
+#contact [data-footlegal]{display:flex!important;gap:2px 20px!important;padding-top:22px!important}
+#contact [data-footwordmark]{display:block!important;width:auto!important;height:44px!important;margin-bottom:30px!important;object-fit:contain;object-position:left center}
+#contact [data-foot-tagline]{display:none!important}
+#contact [data-foot-col-label]{font-size:12px!important;color:#A98D83!important;margin-bottom:2px!important;letter-spacing:.02em!important;text-transform:none!important;font-weight:400!important}
+#contact [data-footlinks] a{min-height:46px!important;font-size:17px!important;font-weight:400!important;color:#F2EDE6!important}
+#contact [data-footcontact]{gap:0!important}
+#contact [data-footcontact] a{min-height:46px!important;font-size:17px!important;color:#F2EDE6!important;text-decoration:none!important}
+#contact [data-social]{margin-top:14px!important}
 #contact p[style*="Legal Disclaimer"],#contact > div > p:first-of-type{font-size:10px!important;line-height:1.5!important}
 [data-footlinks] a{display:flex;align-items:center;min-height:56px;font-size:17.5px!important}
 [data-footcontact]{font-size:17px!important}
@@ -113,11 +120,7 @@ button[aria-label^="Close"]{min-height:44px!important;min-width:44px!important}
 [data-welm-grid]{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
 [data-welm-grid] > *{min-width:0!important}
 
-[data-entry-grid]{position:relative;padding-left:32px!important;gap:16px!important}
-[data-entry-grid]::before{content:"";position:absolute;left:10px;top:-16px;bottom:38px;width:1px;background:rgba(71,24,28,.28)}
-[data-entry-card]{position:relative;overflow:visible}
-[data-entry-card]::before{content:"";position:absolute;left:-22px;top:31px;width:17px;height:1px;background:rgba(71,24,28,.28)}
-[data-entry-card]::after{content:"";position:absolute;left:-26px;top:27px;width:9px;height:9px;border-radius:999px;background:#F2EDE6;border:1px solid rgba(71,24,28,.5)}
+[data-entry-grid]{gap:14px!important}
 
 [data-pdp-hero]{grid-template-columns:minmax(0,1fr)!important;gap:20px!important}
 [data-pdp-media]{order:-1!important;align-self:start!important;min-height:0!important;aspect-ratio:auto!important;height:62.5vw!important;margin:calc(-1 * clamp(20px,3.2vw,42px)) calc(-1 * clamp(16px,4vw,44px)) 0!important}
@@ -147,11 +150,16 @@ button[aria-label^="Close"]{min-height:44px!important;min-width:44px!important}
 [data-wd-head]{display:none!important}
 [data-wd-vs]{display:none!important}
 [data-wd-welm],[data-wd-them]{flex-wrap:wrap!important}
-[data-wd-welm]{box-shadow:inset 3px 0 0 #3F1216!important;padding:16px 16px 18px!important}
-[data-wd-them]{padding:16px 16px 18px!important;border-top:1px solid rgba(71,24,28,.1)!important}
-[data-wd-welm]::before{content:"The Welm way";flex:0 0 100%;font-family:'Jost',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:#7A5426;margin-bottom:11px}
-[data-wd-them]::before{content:"Typical peptide seller";flex:0 0 100%;font-family:'Jost',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:#7A4A42;margin-bottom:11px}
-[data-wd-badge],[data-wd-badge2]{width:44px!important;height:44px!important}
+[data-wd-welm]{box-shadow:inset 3px 0 0 #3F1216!important;padding:11px 14px 12px!important;gap:11px!important;align-items:center!important}
+[data-wd-them]{padding:12px 14px 13px!important;gap:12px!important;align-items:center!important;border-top:1px solid rgba(71,24,28,.1)!important}
+[data-wd-welm] > span:last-child,[data-wd-them] > span:last-child{min-height:0!important}
+[data-wd-welm] > span:last-child > span:first-child{font-size:10px!important;letter-spacing:.16em!important;margin-bottom:2px!important}
+[data-wd-welm] > span:last-child > span:last-child{margin-top:0!important;font-size:15.5px!important;line-height:1.22!important}
+[data-wd-them] > span:last-child > span{font-size:14px!important;line-height:1.28!important}
+[data-wd-welm] > svg,[data-wd-them] > svg{display:none!important}
+[data-wd-welm]::before{content:"The Welm way";flex:0 0 100%;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:#7A5426;margin-bottom:7px}
+[data-wd-them]::before{content:"Typical peptide seller";flex:0 0 100%;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:#7A4A42;margin-bottom:7px}
+[data-wd-badge],[data-wd-badge2]{width:38px!important;height:38px!important}
 [data-wd-promise]{flex-direction:column!important;align-items:stretch!important}
 [data-wd-promise] button{width:100%!important;justify-content:center!important}
 [data-pdp-commit] button{width:100%!important}
@@ -170,6 +178,7 @@ button[aria-label^="Close"]{min-height:44px!important;min-width:44px!important}
 [data-listen-foot]{grid-template-columns:minmax(0,1fr)!important;gap:13px!important}
 [data-pdp-about],[data-pdp-faq],[data-pairs-grid]{grid-template-columns:minmax(0,1fr)!important;gap:22px!important}
 [data-bundle-hero],[data-bundle-two],[data-bundle-grid]{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+[data-bundle-two]{max-width:none!important;margin-top:22px!important}
 [data-bundle-media]{order:-1!important;aspect-ratio:16/11!important}
 [data-bcard-img]{aspect-ratio:16/10!important}
 [data-bint]{min-height:54px!important}
@@ -236,6 +245,12 @@ textarea{min-height:104px}
 }
 @media (max-width:600px){
 [data-shop-tracks]{gap:12px!important}
+[data-rev-rail]{display:flex!important;grid-template-columns:none!important;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:auto!important;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;overscroll-behavior-x:contain;overscroll-behavior-y:auto;scrollbar-width:none;gap:12px!important;
+  --rail-gutter:clamp(18px,5vw,80px);
+  margin-left:calc(-1 * var(--rail-gutter))!important;margin-right:calc(-1 * var(--rail-gutter))!important;
+  padding:2px var(--rail-gutter) 4px!important;scroll-padding-inline:var(--rail-gutter)}
+[data-rev-rail]::-webkit-scrollbar{display:none}
+[data-rev-rail] > *{flex:0 0 82%!important;scroll-snap-align:start}
 [data-prod-rail]{display:flex!important;grid-template-columns:none!important;overflow-x:auto;overflow-y:visible;scroll-snap-type:x proximity;scroll-behavior:auto!important;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;overscroll-behavior-x:contain;overscroll-behavior-y:auto;scrollbar-width:none;gap:12px!important;
   --rail-gutter:clamp(18px,5vw,80px);
   margin-left:calc(-1 * var(--rail-gutter))!important;margin-right:calc(-1 * var(--rail-gutter))!important;
@@ -247,12 +262,19 @@ textarea{min-height:104px}
 [data-prod-rail] image-slot{pointer-events:none}
 [data-card-actions] [data-card-cue]{display:none!important}
 [data-card-actions]{padding-top:12px!important;gap:0!important}
-[data-rail-nav]{display:flex!important}
+div:has(> [data-rail-nav]){position:relative}
+[data-rail-nav]{--rail-card:calc((100vw - 2 * var(--rail-gutter,clamp(18px,5vw,80px))) * .78);
+  display:flex!important;position:absolute;z-index:4;margin:0!important;
+  top:2px;height:calc(var(--rail-card) * .8);
+  left:0;width:var(--rail-card);
+  padding:0 10px 10px;align-items:flex-end!important;justify-content:space-between!important;pointer-events:none}
+[data-shop-scroll] [data-rail-nav]{--rail-gutter:clamp(16px,4vw,44px)}
+[data-rail-prev],[data-rail-next]{pointer-events:auto;background:rgba(248,245,239,.94)!important;box-shadow:0 4px 14px rgba(71,24,28,.22)}
 }
 @media (max-width:560px){
 #welm-header{padding-left:10px!important;padding-right:10px!important;gap:8px!important}
 [data-navmark]{font-size:18px!important;gap:.06em!important}
-[data-foot-grid]{grid-template-columns:minmax(0,1fr)!important}
+[data-foot-grid]{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
 [data-fld2]{grid-template-columns:minmax(0,1fr)!important}
 [data-fld3]{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
 [data-hero-actions]{flex-direction:column!important;align-items:stretch!important}
@@ -260,7 +282,11 @@ textarea{min-height:104px}
 }
 @media (max-width:600px){
 [data-prod-card],[data-prod-card] *{min-width:0!important}
-[data-card-body]{padding:16px 15px 18px!important;gap:9px!important}
+[data-card-body]{padding:13px 14px 15px!important;gap:7px!important}
+[data-card-img]{aspect-ratio:5/4!important}
+[data-card-benefits]{gap:7px!important;margin:2px 0 0!important}
+[data-card-actions]{padding-top:11px!important;gap:9px!important;margin-top:12px!important}
+[data-prod-rail]{align-items:flex-start!important}
 [data-card-cat]{align-items:flex-start!important;font-size:10.5px!important;letter-spacing:.12em!important;line-height:1.35!important;flex-wrap:wrap!important}
 [data-card-cat]>span:first-child{margin-top:4px}
 [data-card-benefits] li{font-size:15px!important}
@@ -301,7 +327,7 @@ textarea{min-height:104px}
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8.5h12l-1 11.5H7L6 8.5z"/><path d="M9 8.5V6.2a3 3 0 0 1 6 0v2.3"/></svg>
       <sc-if value="{{ hasItems }}"><span style="position:absolute;top:4px;right:2px;min-width:16px;height:16px;padding:0 4px;display:inline-flex;align-items:center;justify-content:center;background:#C4956A;color:#47181C;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;border-radius:999px;">{{ cartCount }}</span></sc-if>
     </button>
-    <button data-h-desktop data-magnetic="0.2" data-magnetic-max="4" onClick="{{ onGoIntake }}" style="display:inline-flex;align-items:center;gap:9px;background:none;color:inherit;border:1px solid currentColor;cursor:pointer;padding:11px 18px;border-radius:2px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">
+    <button data-h-desktop data-magnetic="0.2" data-magnetic-max="4" onClick="{{ onOpenShop }}" style="display:inline-flex;align-items:center;gap:9px;background:none;color:inherit;border:1px solid currentColor;cursor:pointer;padding:11px 18px;border-radius:2px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="6.5"/><line x1="16" y1="3" x2="16" y2="6.5"/></svg>
       <span data-menu-label>Begin my protocol</span>
     </button>
@@ -331,20 +357,13 @@ textarea{min-height:104px}
 </section>
 
 <section id="m" data-nav="light" style="position:relative;background:#F2EDE6;border-top:1px solid rgba(71,24,28,.16);padding:clamp(34px,4.2vw,58px) clamp(18px,5vw,80px) clamp(78px,10vw,150px);scroll-margin-top:80px;">
-  <div aria-hidden="true" style="max-width:1360px;margin:0 auto clamp(20px,2.6vw,32px);"><div style="width:56px;height:2px;background:#47181C;"></div></div>
   <div style="max-width:1360px;margin:0 auto;">
     <div data-reveal style="margin-bottom:clamp(40px,5vw,66px);">
       <div style="text-align:center;">
         <div style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#8B5D54;">Where to begin</div>
         <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,4.4vw,58px);line-height:1.02;color:#47181C;margin:10px auto 0;max-width:22ch;">Two ways in,<br>one standard of care</h2>
       </div>
-      <div data-path-tree aria-hidden="true" style="position:relative;height:52px;margin-top:clamp(18px,2.2vw,26px);">
-        <div style="position:absolute;left:50%;top:0;width:1px;height:24px;background:rgba(71,24,28,.30);"></div>
-        <div style="position:absolute;left:25%;right:25%;top:24px;height:1px;background:rgba(71,24,28,.30);"></div>
-        <div style="position:absolute;left:25%;top:24px;width:1px;height:28px;background:rgba(71,24,28,.30);"></div>
-        <div style="position:absolute;left:75%;top:24px;width:1px;height:28px;background:rgba(71,24,28,.30);"></div>
-      </div>
-      <div data-entry-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(14px,2vw,20px);">
+            <div data-entry-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(14px,2vw,20px);">
         <button data-entry-card onClick="{{ onOpenCatalog }}" style="text-align:left;cursor:pointer;background:#F8F5EF;border:1px solid rgba(71,24,28,.16);color:#47181C;padding:clamp(24px,2.8vw,36px);display:flex;flex-direction:column;gap:12px;border-radius:10px;transition:background .25s ease;" style-hover="background:rgba(71,24,28,.06)">
           <div data-entry-eyebrow style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8B5D54;">Direct</div>
           <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(27px,2.6vw,38px);line-height:1.02;">I know what I need</div>
@@ -372,7 +391,7 @@ textarea{min-height:104px}
               <image-slot id="{{ t.slotId }}" shape="rect" fit="cover" placeholder="{{ t.img }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
             </div>
             <sc-if value="{{ t.badge }}"><span style="position:absolute;top:13px;left:13px;z-index:3;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#F2EDE6;background:#47181C;padding:6px 11px;border-radius:999px;">{{ t.badge }}</span></sc-if>
-            <div data-card-body style="padding:clamp(20px,2.2vw,28px);display:flex;flex-direction:column;gap:11px;flex:1;">
+            <div data-card-body style="padding:clamp(16px,1.8vw,22px);display:flex;flex-direction:column;gap:9px;flex:1;">
               <div data-card-cat style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8B5D54;display:flex;align-items:center;gap:7px;"><span style="width:8px;height:8px;border-radius:999px;background:{{ t.catColor }};flex:none;"></span>{{ t.molecules }}</div>
               <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(25px,2vw,32px);line-height:1;color:#47181C;">{{ t.name }}</h3>
               <ul data-card-benefits style="display:flex;flex-direction:column;gap:10px;margin:4px 0 2px;">
@@ -481,18 +500,26 @@ textarea{min-height:104px}
       <div style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#8B5D54;">In their words</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,4.4vw,58px);line-height:1.02;color:#47181C;margin:10px auto 0;max-width:24ch;">What early patients say</h2>
     </div>
-    <div data-voices-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(14px,2vw,20px);margin-top:clamp(30px,4vw,52px);">
-      <sc-for list="{{ homeReviews }}" as="rv" hint-placeholder-count="3">
-        <figure data-reveal style="margin:0;background:#FFFDFA;border:1px solid rgba(71,24,28,.14);border-radius:10px;padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:14px;">
-          <span style="color:#7A5426;font-size:14px;letter-spacing:2px;">★★★★★</span>
-          <blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.7vw,24px);line-height:1.45;color:#47181C;flex:1;">{{ rv.text }}</blockquote>
-          <figcaption style="display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid rgba(71,24,28,.1);">
-            <span style="width:38px;height:38px;border-radius:999px;background:#EFE7DD;display:inline-flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;color:#7A5426;flex:none;">{{ rv.initials }}</span>
-            <span><span style="display:block;font-family:'Jost',sans-serif;font-size:14px;font-weight:600;color:#47181C;">{{ rv.name }}</span><span style="display:block;font-family:'Jost',sans-serif;font-size:12.5px;color:#8B5D54;margin-top:2px;">{{ rv.meta }}</span></span>
-          </figcaption>
-        </figure>
-      </sc-for>
-    </div>
+    <sc-for list="{{ reviewGroups }}" as="rg" hint-placeholder-count="3">
+      <div data-reveal style="margin-top:clamp(28px,3.6vw,46px);">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+          <h3 style="font-family:'Jost',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8B5D54;">{{ rg.title }}</h3>
+          <span style="font-family:'Jost',sans-serif;font-size:12.5px;color:#8B5D54;">{{ rg.count }}</span>
+        </div>
+        <div data-voices-grid data-rev-rail id="{{ rg.railId }}" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,20px);margin-top:clamp(14px,1.8vw,20px);">
+          <sc-for list="{{ rg.items }}" as="rv" hint-placeholder-count="3">
+            <figure style="margin:0;background:#FFFDFA;border:1px solid rgba(71,24,28,.14);border-radius:10px;padding:clamp(20px,2.2vw,28px);display:flex;flex-direction:column;gap:13px;">
+              <span style="color:#7A5426;font-size:14px;letter-spacing:2px;">★★★★★</span>
+              <blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(19px,1.6vw,23px);line-height:1.45;color:#47181C;flex:1;">{{ rv.text }}</blockquote>
+              <figcaption style="display:flex;align-items:center;gap:12px;padding-top:13px;border-top:1px solid rgba(71,24,28,.1);">
+                <span style="width:38px;height:38px;border-radius:999px;background:#EFE7DD;display:inline-flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;color:#7A5426;flex:none;">{{ rv.initials }}</span>
+                <span><span style="display:block;font-family:'Jost',sans-serif;font-size:14px;font-weight:600;color:#47181C;">{{ rv.name }}</span><span style="display:block;font-family:'Jost',sans-serif;font-size:12.5px;color:#8B5D54;margin-top:2px;">{{ rv.meta }}</span></span>
+              </figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
     <div data-reveal style="margin-top:clamp(18px,2.4vw,26px);border:1px dashed rgba(71,24,28,.3);border-radius:10px;padding:14px 18px;text-align:center;font-family:'Jost',sans-serif;font-size:12.5px;line-height:1.55;color:#8B5D54;">Placeholder testimonials — to be replaced with real friends-and-family reviews before launch.</div>
   </div>
 </section>
@@ -912,29 +939,29 @@ textarea{min-height:104px}
   <div style="max-width:1360px;margin:0 auto;">
     <div style="display:grid;grid-template-columns:1.5fr .9fr .9fr 1.3fr 1.1fr;gap:clamp(28px,4vw,56px);padding-bottom:clamp(40px,5vw,64px);border-bottom:1px solid rgba(242,237,230,.14);" data-foot-grid>
       <div>
-        
-        <p style="font-family:'Cormorant Garamond',serif;font-size:20px;line-height:1.5;color:#C3A79F;margin-top:16px;max-width:32ch;">A new standard in longevity medicine — clinically rigorous, individually calibrated, entirely virtual.</p>
+        <img data-footwordmark src="welm-wordmark-light.png" alt="Welm" style="display:none;">
+        <p data-foot-tagline style="font-family:'Cormorant Garamond',serif;font-size:20px;line-height:1.5;color:#C3A79F;margin-top:16px;max-width:32ch;">A new standard in longevity medicine — clinically rigorous, individually calibrated, entirely virtual.</p>
       </div>
       <div>
-        <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C3A79F;margin-bottom:16px;">The method</div>
+        <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C3A79F;margin-bottom:16px;" data-foot-col-label>The method</div>
         <ul data-footlinks style="display:flex;flex-direction:column;gap:11px;">
           <sc-for list="{{ footMethod }}" as="l" hint-placeholder-count="4"><li><a href="#" onClick="{{ l.onClick }}" style="font-family:'Jost',sans-serif;font-size:14px;color:#D8C3BC;">{{ l.label }}</a></li></sc-for>
         </ul>
       </div>
       <div>
-        <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C3A79F;margin-bottom:16px;">Company</div>
+        <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C3A79F;margin-bottom:16px;" data-foot-col-label>Company</div>
         <ul data-footlinks style="display:flex;flex-direction:column;gap:11px;">
           <sc-for list="{{ footCompany }}" as="l" hint-placeholder-count="4"><li><a href="#" onClick="{{ l.onClick }}" style="font-family:'Jost',sans-serif;font-size:14px;color:#D8C3BC;">{{ l.label }}</a></li></sc-for>
         </ul>
       </div>
       <div>
-        <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C3A79F;margin-bottom:16px;">Legal</div>
+        <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C3A79F;margin-bottom:16px;" data-foot-col-label>Legal</div>
         <ul data-footlinks style="display:flex;flex-direction:column;gap:11px;">
           <sc-for list="{{ footLegal }}" as="l" hint-placeholder-count="9"><li><a href="#" onClick="{{ l.onClick }}" style="font-family:'Jost',sans-serif;font-size:14px;color:#D8C3BC;">{{ l.label }}</a></li></sc-for>
         </ul>
       </div>
       <div>
-        <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C3A79F;margin-bottom:16px;">Contact</div>
+        <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C3A79F;margin-bottom:16px;" data-foot-col-label>Contact</div>
         <div data-footcontact style="display:flex;flex-direction:column;gap:11px;font-family:'Jost',sans-serif;font-size:14px;line-height:1.5;color:#D8C3BC;">
           <a href="mailto:support@welmhealth.com" style="color:#D8C3BC;text-decoration:underline;text-decoration-color:rgba(216,195,188,.45);text-underline-offset:3px;">support@welmhealth.com</a>
           <a href="tel:15644644394" style="color:#D8C3BC;text-decoration:underline;text-decoration-color:rgba(216,195,188,.45);text-underline-offset:3px;">+1 (564) 464-4394</a>
@@ -963,9 +990,8 @@ textarea{min-height:104px}
 </footer>
 
 <div data-mcta style="position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;align-items:center;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#3A1317;border-top:1px solid rgba(242,237,230,.12);">
-  <button onClick="{{ onOpenShop }}" style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#5C2228;color:#F2EDE6;border:1px solid rgba(242,237,230,.42);cursor:pointer;padding:13px 18px;border-radius:2px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;">Shop treatments</button>
   <div data-mcta-row style="width:100%;">
-  <button onClick="{{ onGoIntake }}" style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#5C2228;color:#F2EDE6;border:1px solid rgba(242,237,230,.42);cursor:pointer;padding:15px 18px;border-radius:2px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="6.5"/><line x1="16" y1="3" x2="16" y2="6.5"/></svg>Begin my protocol</button>
+  <button onClick="{{ onOpenShop }}" style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#5C2228;color:#F2EDE6;border:1px solid rgba(242,237,230,.42);cursor:pointer;padding:15px 18px;border-radius:2px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="6.5"/><line x1="16" y1="3" x2="16" y2="6.5"/></svg>Begin my protocol</button>
   <button onClick="{{ onOpenCart }}" aria-label="My plan" style="position:relative;flex:none;display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;background:#5C2228;color:#F2EDE6;border:1px solid rgba(242,237,230,.42);cursor:pointer;border-radius:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8.5h12l-1 11.5H7L6 8.5z"/><path d="M9 8.5V6.2a3 3 0 0 1 6 0v2.3"/></svg><sc-if value="{{ hasItems }}"><span style="position:absolute;top:5px;right:4px;min-width:16px;height:16px;padding:0 4px;display:inline-flex;align-items:center;justify-content:center;background:#C4956A;color:#47181C;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;border-radius:999px;">{{ cartCount }}</span></sc-if></button>
   </div>
 </div>
@@ -1143,7 +1169,7 @@ textarea{min-height:104px}
                 <image-slot id="{{ t.slotId }}" shape="rect" fit="cover" placeholder="{{ t.img }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
               </div>
               <sc-if value="{{ t.badge }}"><span style="position:absolute;top:13px;left:13px;z-index:3;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#F2EDE6;background:#47181C;padding:6px 11px;border-radius:999px;">{{ t.badge }}</span></sc-if>
-              <div data-card-body style="padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:11px;flex:1;">
+              <div data-card-body style="padding:clamp(16px,1.8vw,22px);display:flex;flex-direction:column;gap:9px;flex:1;">
                 <div data-card-cat style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8B5D54;display:flex;align-items:center;gap:7px;"><span style="width:8px;height:8px;border-radius:999px;background:{{ t.catColor }};flex:none;"></span>{{ t.molecules }}</div>
                 <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,1.9vw,30px);line-height:1;color:#47181C;">{{ t.name }}</h3>
                 <ul data-card-benefits style="display:flex;flex-direction:column;gap:10px;margin:4px 0 2px;">
@@ -2097,9 +2123,21 @@ textarea{min-height:104px}
         </div>
         <div data-bundle-hero style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,54px);align-items:center;margin-top:clamp(16px,2.4vw,28px);">
           <div>
-            <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8B5D54;">{{ activeBundle.goal }} · {{ activeBundle.vialCount }}</div>
+            <div style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8B5D54;">{{ activeBundle.goal }}</div>
             <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,4.8vw,62px);line-height:1;color:#47181C;margin-top:12px;">{{ activeBundle.name }}</h1>
-            <div style="font-family:'Jost',sans-serif;font-size:15.5px;letter-spacing:.02em;color:#8B5D54;margin-top:10px;">{{ activeBundle.sub }}</div>
+            <div style="margin-top:clamp(16px,2vw,22px);">
+            <div style="border:1px solid rgba(71,24,28,.16);border-radius:10px;background:#F8F5EF;overflow:hidden;">
+              <div style="padding:14px clamp(18px,2vw,26px);border-bottom:1px solid rgba(71,24,28,.12);background:#EFE7DD;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8B5D54;">What is in this bundle</div>
+              <div style="padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;gap:12px;">
+                <sc-for list="{{ activeBundle.components }}" as="c" hint-placeholder-count="3">
+                  <div style="background:#FFFDFA;border:1px solid rgba(71,24,28,.14);border-radius:10px;padding:14px 16px;">
+                    <span style="display:block;font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.1;color:#47181C;">{{ c.name }}</span>
+                    <span style="display:block;font-family:'Jost',sans-serif;font-size:12.5px;color:#8B5D54;margin-top:3px;">{{ c.prog }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            </div>
             <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.7vw,26px);line-height:1.4;color:#3C1115;margin-top:16px;max-width:38ch;">{{ activeBundle.blurb }}</p>
             <ul style="display:flex;flex-direction:column;gap:12px;margin-top:clamp(20px,2.6vw,28px);">
               <sc-for list="{{ activeBundle.benefits }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:11px;font-family:'Jost',sans-serif;font-size:16px;line-height:1.45;color:#3C1115;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A97A45" stroke-width="2" style="flex:none;margin-top:3px;"><polyline points="4 12.5 9.5 18 20 6"/></svg>{{ b }}</li></sc-for>
@@ -2110,24 +2148,7 @@ textarea{min-height:104px}
           </div>
         </div>
 
-        <div data-bundle-two style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(16px,2.4vw,28px);margin-top:clamp(30px,4vw,52px);align-items:start;">
-          <div style="border:1px solid rgba(71,24,28,.16);border-radius:10px;background:#F8F5EF;overflow:hidden;">
-            <div style="padding:14px clamp(18px,2vw,26px);border-bottom:1px solid rgba(71,24,28,.12);background:#EFE7DD;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8B5D54;">What is in this bundle</div>
-            <div style="padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;gap:12px;">
-              <sc-for list="{{ activeBundle.components }}" as="c" hint-placeholder-count="3">
-                <button onClick="{{ c.onView }}" style="text-align:left;cursor:pointer;background:#FFFDFA;border:1px solid rgba(71,24,28,.14);border-radius:10px;padding:15px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:64px;" style-hover="background:#EFE7DD">
-                  <span>
-                    <span style="display:block;font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.1;color:#47181C;">{{ c.name }}</span>
-                    <span style="display:block;font-family:'Jost',sans-serif;font-size:12.5px;color:#8B5D54;margin-top:3px;">{{ c.prog }}</span>
-                  </span>
-                  <span style="display:inline-flex;align-items:center;gap:11px;flex:none;">
-                    <span style="font-family:'Jost',sans-serif;font-size:13px;color:#6A4E48;white-space:nowrap;">{{ c.priceLabel }}</span>
-                    <svg width="16" height="10" viewBox="0 0 20 14" fill="none" stroke="#47181C" stroke-width="1.7"><line x1="0" y1="7" x2="16" y2="7"/><polyline points="10.5 1.5 17 7 10.5 12.5"/></svg>
-                  </span>
-                </button>
-              </sc-for>
-            </div>
-          </div>
+        <div data-bundle-two style="display:grid;grid-template-columns:minmax(0,1fr);max-width:560px;gap:clamp(16px,2.4vw,28px);margin-top:clamp(30px,4vw,52px);align-items:start;">
           <div style="border:1px solid rgba(71,24,28,.18);border-radius:10px;background:#FFFDFA;overflow:hidden;">
             <div data-bint-row style="display:flex;">
               <sc-for list="{{ activeBundle.intervals }}" as="iv" hint-placeholder-count="2">
@@ -2167,7 +2188,7 @@ textarea{min-height:104px}
               </div>
               <div style="padding:clamp(20px,2.2vw,26px);display:flex;flex-direction:column;gap:10px;flex:1;">
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8B5D54;">
-                  <span>{{ bn.goal }}</span><span style="color:#8B5D54;">{{ bn.vialCount }}</span>
+                  <span>{{ bn.goal }}</span>
                 </div>
                 <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(25px,2.1vw,31px);line-height:1.04;color:#47181C;">{{ bn.name }}</h3>
                 <div style="font-family:'Jost',sans-serif;font-size:14px;line-height:1.45;color:#8B5D54;">{{ bn.sub }}</div>
@@ -2235,11 +2256,11 @@ class Component extends DCLogic {
       nodollar:'<line x1="12" y1="4.2" x2="12" y2="19.8"/><path d="M16 8.1C15.2 7 13.8 6.5 12 6.5c-2.3 0-3.9 1.1-3.9 2.7 0 4.1 8.1 2 8.1 6.2 0 1.8-1.7 2.9-4.2 2.9-2.1 0-3.6-.6-4.5-1.8"/><line x1="4.6" y1="19.4" x2="19.4" y2="4.6"/>'
     };
     this.comparison = [
-      { dim:'Philosophy', welm:'You understand your protocol and why it was chosen', them:'Transaction-first fulfillment', icon:ico(P.book,icoW), themIcon:ico(P.cart,icoT) },
-      { dim:'Treatment design', welm:'Biomarker-guided and individually calibrated', them:'One-size, fixed dosing', icon:ico(P.helix,icoW), themIcon:ico(P.boxes,icoT) },
-      { dim:'Clinical access', welm:'A licensed team you can actually talk to', them:'No licensed clinician review', icon:ico(P.chat,icoW), themIcon:ico(P.noperson,icoT) },
-      { dim:'Medications', welm:'Pharmaceutical-grade 503A / 503B compounding', them:'Opaque sourcing', icon:ico(P.vialcheck,icoW), themIcon:ico(P.crate,icoT) },
-      { dim:'Monitoring', welm:'Ongoing labs and dose adjustment', them:'No structured follow-up', icon:ico(P.chart,icoW), themIcon:ico(P.nocal,icoT) },
+      { dim:'Philosophy', welm:'You understand the why behind it', them:'Transaction-first fulfillment', icon:ico(P.book,icoW), themIcon:ico(P.cart,icoT) },
+      { dim:'Treatment design', welm:'Individually calibrated dosing', them:'One-size, fixed dosing', icon:ico(P.helix,icoW), themIcon:ico(P.boxes,icoT) },
+      { dim:'Clinical access', welm:'A licensed team you can talk to', them:'No licensed clinician review', icon:ico(P.chat,icoW), themIcon:ico(P.noperson,icoT) },
+      { dim:'Medications', welm:'Pharmaceutical-grade compounding', them:'Opaque sourcing', icon:ico(P.vialcheck,icoW), themIcon:ico(P.crate,icoT) },
+      { dim:'Monitoring', welm:'Ongoing labs and adjustment', them:'No structured follow-up', icon:ico(P.chart,icoW), themIcon:ico(P.nocal,icoT) },
       { dim:'Pricing', welm:'Transparent cash-pay pricing', them:'Hidden fees and add-ons', icon:ico(P.coin,icoW), themIcon:ico(P.nodollar,icoT) }
     ];
     this.listenPoints = ['A clinician reads every intake — not an algorithm','We ask follow-ups before we prescribe','We adjust as your data changes'];
@@ -2501,8 +2522,14 @@ class Component extends DCLogic {
     this.contactOptions = ['Email','Phone','Text'];
     this.homeReviews=[
       {initials:'JM', name:'Jordan M.', meta:'Tirzepatide · Active Weight Loss · 6 months', text:'The titration plan was explained before I paid for anything, and my provider actually replied when I had questions. Steady, real progress.'},
-      {initials:'AR', name:'Alex R.', meta:'Semaglutide · Maintenance · 4 months', text:'No guesswork. My history was reviewed, the dose was adjusted twice, and it shipped discreetly. This is the clinical rigor I was looking for.'},
-      {initials:'PT', name:'Priya T.', meta:'NAD+ · Longevity · 3 months', text:'I came in skeptical about anything sold online. Being able to message a real physician changed that completely.'}
+      {initials:'DC', name:'Daniel C.', meta:'Tirzepatide · Active Weight Loss · 5 months', text:'I had stalled on another program. Here the dose moved when it needed to, and someone was actually watching the numbers with me.'},
+      {initials:'MR', name:'Maria R.', meta:'Semaglutide · Active Weight Loss · 7 months', text:'Down 41 pounds. What made the difference was the check-ins — I never felt like I was managing this alone.'},
+      {initials:'AR', name:'Alex R.', meta:'Semaglutide · Maintenance & Optimization · 4 months', text:'No guesswork. My history was reviewed, the dose was adjusted twice, and it shipped discreetly. This is the clinical rigor I was looking for.'},
+      {initials:'KH', name:'Katie H.', meta:'Tirzepatide · Maintenance & Optimization · 8 months', text:'I lost the weight elsewhere and was terrified of putting it back on. A year in, the lower dose has held it without the side effects.'},
+      {initials:'BW', name:'Ben W.', meta:'Semaglutide · Maintenance & Optimization · 5 months', text:'The food noise is just quieter. I am not white-knuckling anything, which is what makes it sustainable.'},
+      {initials:'PT', name:'Priya T.', meta:'NAD+ · Longevity · 3 months', text:'I came in skeptical about anything sold online. Being able to message a real physician changed that completely.'},
+      {initials:'RS', name:'Ryan S.', meta:'Sermorelin · Recovery · 6 months', text:'Sleep was the first thing to change, within about three weeks. Training recovery followed a month or so later.'},
+      {initials:'LN', name:'Lena N.', meta:'NAD+ · B12 · Energy · 4 months', text:'Not a stimulant lift — just no longer hitting a wall at three in the afternoon. That was the whole goal.'}
     ];
     this.productReviews=[
       {initials:'JM', name:'Jordan M.', text:'The titration plan was clearly explained and my provider actually responded when I had questions — steady, real progress.'},
@@ -3508,6 +3535,15 @@ class Component extends DCLogic {
       // data
       founders:this.founders, comparison:this.comparison, listenPoints:this.listenPoints,
       caseStudies:this.caseStudies, treatments, catGroups, faqGroups, faqTop,
+      reviewGroups:[
+        {key:'loss', title:'Active Weight Loss'},
+        {key:'maint', title:'Maintenance & Optimization'},
+        {key:'energy', title:'Energy & Longevity'}
+      ].map((g,gi)=>{
+        const items=this.homeReviews.slice(gi*3, gi*3+3);
+        const railId='welm-rev-'+g.key;
+        return { title:g.title, railId, items, count:items.length+' reviews' };
+      }),
       bundlesOpen:S.bundlesOpen, onOpenBundles:(e)=>{ if(e&&e.preventDefault)e.preventDefault(); this.openBundles(); }, onCloseBundles:()=>this.closeBundles(),
       bundles, activeBundle:ab, hasActiveBundle:!!ab, noActiveBundle:!ab,
       homeRail:{ onPrev:()=>this.scrollRail('welm-rail-home',-1), onNext:()=>this.scrollRail('welm-rail-home',1) },
