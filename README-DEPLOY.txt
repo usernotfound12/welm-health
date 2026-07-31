@@ -68,8 +68,10 @@ STILL TO FINALIZE BEFORE LAUNCH
   · Testimonials are placeholders — swap for real friends-and-family
     reviews (Trustpilot badge once ~100 are seeded).
   · Bundle names, copy and the 15% pricing are placeholders.
-  · "Everyday Balance" (Tirzepatide micro + NAD+) has no product
-    photo yet — its card shows an empty image slot.
+  · Nine bundles ship; six are linked from "Start with your goal" on
+    the home and shop pages, the other three are reachable from the
+    footer under Company → Bundles. A Tirzepatide-micro + NAD+ pairing
+    is on hold pending a two-vial product photo.
   · Legal pages still carry the source WellSync / Click to Fill
     entity names — swap for Welm Health LLC.
   · State coverage is 36 states + Washington, D.C. Update

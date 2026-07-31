@@ -236,14 +236,15 @@ textarea{min-height:104px}
 }
 @media (max-width:600px){
 [data-shop-tracks]{gap:12px!important}
-[data-prod-rail]{display:flex!important;grid-template-columns:none!important;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;gap:12px!important;
+[data-prod-rail]{display:flex!important;grid-template-columns:none!important;overflow-x:auto;overflow-y:visible;scroll-snap-type:x proximity;scroll-behavior:auto!important;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;overscroll-behavior-x:contain;overscroll-behavior-y:auto;scrollbar-width:none;gap:12px!important;
   --rail-gutter:clamp(18px,5vw,80px);
   margin-left:calc(-1 * var(--rail-gutter))!important;margin-right:calc(-1 * var(--rail-gutter))!important;
   padding:2px var(--rail-gutter) 4px!important;scroll-padding-inline:var(--rail-gutter)}
 [data-shop-scroll] [data-prod-rail]{--rail-gutter:clamp(16px,4vw,44px)}
 [data-prod-rail]::-webkit-scrollbar{display:none}
 [data-prod-rail] > *{flex:0 0 78%!important;scroll-snap-align:start}
-[data-prod-card]{touch-action:auto!important}
+[data-prod-card],[data-prod-card] *{touch-action:pan-x pan-y pinch-zoom!important}
+[data-prod-rail] image-slot{pointer-events:none}
 [data-card-actions] [data-card-cue]{display:none!important}
 [data-card-actions]{padding-top:12px!important;gap:0!important}
 [data-rail-nav]{display:flex!important}
@@ -1052,7 +1053,10 @@ textarea{min-height:104px}
         <sc-if value="{{ hasItems }}">
           <sc-for list="{{ cartItems }}" as="i" hint-placeholder-count="1">
             <div style="padding:18px 24px;border-bottom:1px solid rgba(71,24,28,.08);display:flex;gap:14px;align-items:flex-start;">
-              <div style="flex:1;">
+              <div data-cart-thumb aria-hidden="true" style="flex:none;width:64px;height:64px;border-radius:8px;overflow:hidden;background:#E4D8CE;border:1px solid rgba(71,24,28,.12);position:relative;">
+                <image-slot id="{{ i.slotId }}" shape="rect" fit="cover" placeholder="{{ i.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+              </div>
+              <div style="flex:1;min-width:0;">
                 <div style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#47181C;line-height:1.1;">{{ i.name }}</div>
                 <div style="font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.04em;color:#8B5D54;margin-top:4px;">{{ i.sub }}</div>
                 <div style="font-family:'Jost',sans-serif;font-size:13px;color:#47181C;margin-top:2px;">{{ i.lineTotal }}</div>
@@ -1155,6 +1159,30 @@ textarea{min-height:104px}
             </div>
           </div>
         </sc-for>
+      </div>
+      <div data-reveal style="margin-top:clamp(40px,5.4vw,76px);padding-top:clamp(34px,4.4vw,58px);border-top:1px solid rgba(71,24,28,.16);">
+        <div data-listen-head style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end;">
+          <div>
+            <div style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#8B5D54;">Start with your goal</div>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3.6vw,48px);line-height:1.02;color:#47181C;margin-top:10px;max-width:20ch;">What are you trying to change?</h2>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(18px,1.5vw,22px);line-height:1.45;color:#5E322D;max-width:44ch;">Tell us the outcome and we will show you the therapy behind it. A clinician reads every intake — not an algorithm.</p>
+        </div>
+        <div data-goal-grid style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.6vw,18px);margin-top:clamp(24px,3vw,38px);">
+          <sc-for list="{{ listenGoals }}" as="g" hint-placeholder-count="6">
+            <button data-goal-card onClick="{{ g.onClick }}" style="text-align:left;cursor:pointer;background:#F8F5EF;border:1px solid rgba(71,24,28,.14);border-radius:10px;padding:clamp(20px,2.2vw,28px);display:flex;flex-direction:column;gap:11px;min-height:100%;transition:background .22s ease;" style-hover="background:#EFE7DD">
+              <div data-goal-head style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+                <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(23px,1.9vw,29px);line-height:1.04;color:#47181C;">{{ g.goal }}</h3>
+                <span data-goal-sub style="font-family:'Jost',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8B5D54;line-height:1.4;">{{ g.sub }}</span>
+              </div>
+              <p style="font-family:'Jost',sans-serif;font-size:14.5px;line-height:1.6;color:#5E322D;flex:1;">{{ g.body }}</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px;padding-top:13px;border-top:1px solid rgba(71,24,28,.12);width:100%;">
+                <span style="font-family:'Jost',sans-serif;font-size:12.5px;color:#8B5D54;">{{ g.treats }}</span>
+                <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:999px;border:1px solid rgba(71,24,28,.28);color:#47181C;flex:none;"><svg width="14" height="9" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="0" y1="7" x2="16" y2="7"/><polyline points="10.5 1.5 17 7 10.5 12.5"/></svg></span>
+              </div>
+            </button>
+          </sc-for>
+        </div>
       </div>
     </div>
     <footer data-minifoot style="background:#3A1317;color:#D8C3BC;padding:clamp(38px,5vw,60px) clamp(18px,5vw,60px) clamp(26px,3vw,34px);margin-top:clamp(44px,6vw,84px);">
@@ -2156,7 +2184,7 @@ textarea{min-height:104px}
             </div>
           </sc-for>
         </div>
-        <div style="margin-top:clamp(20px,2.6vw,30px);border:1px dashed rgba(71,24,28,.3);border-radius:10px;padding:14px 18px;text-align:center;font-family:'Jost',sans-serif;font-size:12.5px;line-height:1.55;color:#8B5D54;">Bundle names, copy and the 15% pricing are placeholders pending review. "Everyday Balance" is awaiting its product photo.</div>
+        <div style="margin-top:clamp(20px,2.6vw,30px);border:1px dashed rgba(71,24,28,.3);border-radius:10px;padding:14px 18px;text-align:center;font-family:'Jost',sans-serif;font-size:12.5px;line-height:1.55;color:#8B5D54;">Bundle names, copy and the 15% pricing are placeholders pending review.</div>
       </div>
     </sc-if>
   </div>
@@ -2216,12 +2244,12 @@ class Component extends DCLogic {
     ];
     this.listenPoints = ['A clinician reads every intake — not an algorithm','We ask follow-ups before we prescribe','We adjust as your data changes'];
     this.listenGoals = [
-      { goal:'Lose weight', sub:'20 lbs or more', body:'Full therapeutic GLP-1 dosing with a structured escalation schedule and a provider watching how you respond.', treats:'Tirzepatide · Semaglutide', pid:'tirzepatide' },
-      { goal:'Hold my results', sub:'Maintain, do not rebound', body:'Lower-dose GLP-1 therapy built for the long run — quieter food noise, gentler side-effect profile.', treats:'Semaglutide · Tirzepatide', pid:'semaglutide' },
-      { goal:'Get my energy back', sub:'Tired by mid-afternoon', body:'Cellular energy and methylation support, dosed weekly. Steadier baseline rather than a stimulant lift.', treats:'NAD+ · Methylcobalamin B12', pid:'nad' },
-      { goal:'Sleep and recover better', sub:'Training hard, healing slow', body:'Growth hormone signaling that works with your own overnight rhythm. Sleep depth usually changes first.', treats:'Sermorelin', pid:'sermorelin' },
-      { goal:'Change my body composition', sub:'Lean mass, not just scale weight', body:'A GLP-1 protocol paired with recovery and fat-metabolism support, tracked against real markers.', treats:'Tirzepatide · Sermorelin · MICC', pid:'micc' },
-      { goal:'Invest in longevity', sub:'Play the long game', body:'Cellular repair and mitochondrial support for people optimizing decades, not weeks.', treats:'NAD+ · Sermorelin', pid:'nad' }
+      { goal:'Lose weight', sub:'20 lbs or more', body:'Full therapeutic GLP-1 dosing with a structured escalation schedule, plus the energy support patients want while in a deficit.', treats:'Tirzepatide · NAD+ · B12', bid:'tirz-full-nad-b12' },
+      { goal:'Hold my results', sub:'Maintain, do not rebound', body:'Lower-dose GLP-1 therapy built for the long run, with energy, sleep and recovery support alongside it.', treats:'Tirzepatide · NAD+ · B12 · Sermorelin', bid:'tirz-micro-nad-b12-sermorelin' },
+      { goal:'Get my energy back', sub:'Tired by mid-afternoon', body:'Cellular energy and methylation support, dosed weekly. Steadier baseline rather than a stimulant lift.', treats:'NAD+ · Methylcobalamin B12', bid:'nad-b12' },
+      { goal:'Sleep and recover better', sub:'Training hard, healing slow', body:'Overnight growth hormone signaling with cellular energy support. Sleep depth usually changes first.', treats:'NAD+ · B12 · Sermorelin', bid:'nad-b12-sermorelin' },
+      { goal:'Change my body composition', sub:'Lean mass, not just scale weight', body:'Lower-dose GLP-1 to quiet food noise, paired with overnight recovery so you lose fat and keep lean mass.', treats:'Tirzepatide · Sermorelin', bid:'tirz-micro-sermorelin' },
+      { goal:'Invest in longevity', sub:'Play the long game', body:'Cellular repair and mitochondrial support for people optimizing decades, not weeks.', treats:'NAD+ · Sermorelin', bid:'sermorelin-nad' }
     ];
     this.caseStudies = [
       { tag:'Archetype', age:'High output', title:'The Overloaded Achiever', quote:'For those who run every part of life on a system except their health.', body:'Years of sustained high output accrue a measurable biological cost. The answer wasn’t more — it was a precise, minimal NAD+ and Sermorelin plan, monitored and adjusted against biomarkers.' },
@@ -2426,12 +2454,6 @@ class Component extends DCLogic {
         blurb:'Every lever at once: therapeutic-dose GLP-1, cellular energy, methylation support and overnight recovery.',
         parts:[{id:'tirzepatide',prog:'Standard'},{id:'nad',prog:'Longevity'},{id:'b12',prog:'Vitamin'},{id:'sermorelin',prog:'Recovery'}],
         benefits:['Fastest meaningful change','Recovery and energy support built in','One intake, one provider, one plan'] },
-      { id:'tirz-micro-nad-b12', slot:'welm-bundle-tirzm-nad-b12', name:'Metabolic Optimization',
-        sub:'Tirzepatide (micro) + NAD+ + B12',
-        goal:'Metabolic health',
-        blurb:'Lower-dose GLP-1 for metabolic health rather than rapid loss, with cellular energy and methylation support alongside.',
-        parts:[{id:'tirzepatide',prog:'Microdose'},{id:'nad',prog:'Longevity'},{id:'b12',prog:'Vitamin'}],
-        benefits:['Improved metabolic markers','Quieter cravings and food noise','Steady daily energy'] },
       { id:'nad-b12-sermorelin', slot:'welm-bundle-nad-b12-serm', name:'Restore & Recover',
         sub:'NAD+ + B12 + Sermorelin',
         goal:'Energy & recovery',
@@ -2444,12 +2466,12 @@ class Component extends DCLogic {
         blurb:'Therapeutic-dose GLP-1 paired with overnight recovery support — losing weight without losing sleep quality or lean mass.',
         parts:[{id:'tirzepatide',prog:'Standard'},{id:'sermorelin',prog:'Recovery'}],
         benefits:['Significant, sustained weight loss','Preserves lean mass','Better sleep through the process'] },
-      { id:'tirz-micro-nad', slot:'welm-bundle-tirzm-nad', name:'Everyday Balance',
-        sub:'Tirzepatide (micro) + NAD+',
-        goal:'Balance',
-        blurb:'The simplest metabolic pairing — lower-dose GLP-1 for appetite regulation with NAD+ for cellular energy.',
-        parts:[{id:'tirzepatide',prog:'Microdose'},{id:'nad',prog:'Longevity'}],
-        benefits:['Quieter food noise','Steady daily energy','Two vials, one weekly routine'] }
+      { id:'tirz-micro-nad-b12', slot:'welm-bundle-tirzm-nad-b12', name:'Metabolic Optimization',
+        sub:'Tirzepatide (micro) + NAD+ + B12',
+        goal:'Metabolic health',
+        blurb:'Lower-dose GLP-1 for metabolic health rather than rapid loss, with cellular energy and methylation support alongside.',
+        parts:[{id:'tirzepatide',prog:'Microdose'},{id:'nad',prog:'Longevity'},{id:'b12',prog:'Vitamin'}],
+        benefits:['Improved metabolic markers','Quieter cravings and food noise','Steady daily energy'] }
     ];
     this.programMeta = {
       'Microdose': { label:'Maintenance & Optimization', tag:'Lower dose',
@@ -3225,7 +3247,7 @@ class Component extends DCLogic {
     const catLegend=[{label:'GLP-1',color:'#47181C',anchor:'welm-cat-glp1'},{label:'Longevity / Peptides',color:'#C17F3A',anchor:'welm-cat-longevity'},{label:'Metabolic Support',color:'#843E25',anchor:'welm-cat-metabolic'}].map(c=>({...c,onClick:()=>scrollShopTo(c.anchor)}));
 
     const intLabel=(iv)=>iv==='monthly'?'Monthly':'Quarterly';
-    const cartItems=S.cart.map(i=>({ ...i, sub:(i.program==='Standard'||i.program==='Microdose'?this.progLabel(i.program)+' · ':'')+intLabel(i.interval), lineTotal:'$'+(i.price*i.qty)+(i.interval==='monthly'?'/mo':'/qtr'), onInc:()=>this.setQty(i.key,1), onDec:()=>this.setQty(i.key,-1), onRemove:()=>this.removeItem(i.key) }));
+    const cartItems=S.cart.map(i=>({ ...i, slotId:'welm-prod-'+(i.id==='b12'?'b12':i.id), sub:(i.program==='Standard'||i.program==='Microdose'?this.progLabel(i.program)+' · ':'')+intLabel(i.interval), lineTotal:'$'+(i.price*i.qty)+(i.interval==='monthly'?'/mo':'/qtr'), onInc:()=>this.setQty(i.key,1), onDec:()=>this.setQty(i.key,-1), onRemove:()=>this.removeItem(i.key) }));
     const cartCount=S.cart.reduce((a,i)=>a+i.qty,0);
     const cartSubtotal='$'+S.cart.reduce((a,i)=>a+i.price*i.qty,0);
     const coRecs=this.treatmentsData.filter(t=>S.cart.every(i=>i.id!==t.id)).slice(0,3).map(t=>{
@@ -3297,7 +3319,7 @@ class Component extends DCLogic {
       btnStyle:'cursor:pointer;padding:15px 20px;border-radius:2px;font-family:\'Jost\',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:opacity .2s ease;border:'+(apInCart?'1px solid #C4956A;background:#E8E0D8;color:#7A5426':'0;background:#47181C;color:#F2EDE6'),
       onAdd: ()=>this.addToCart(apRaw, apProg, apInt, apPrice),
       onBuyNow: ()=>this.buyNow(apRaw, apProg, apInt, apPrice) };
-    this.listenGoalCards=this.listenGoals.map(g=>({ ...g, onClick:()=>this.openProduct(g.pid) }));
+    this.listenGoalCards=this.listenGoals.map(g=>({ ...g, onClick:()=>this.openBundle(g.bid) }));
     const bInt=S.bundleInterval||'quarterly';
     const buildBundle=(b)=>{
       const parts=b.parts.map(p=>{ const t=this.treatmentsData.find(x=>x.id===p.id); return {t, prog:p.prog, m:t.plans[p.prog].m, q:t.plans[p.prog].q, perMo:Math.round(t.plans[p.prog].q/3)}; });
