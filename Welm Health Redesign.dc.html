@@ -285,10 +285,9 @@ div:has(> [data-rail-nav]){position:relative}
 [data-card-body]{padding:13px 14px 15px!important;gap:7px!important}
 [data-card-img]{aspect-ratio:5/4!important}
 [data-card-benefits]{gap:7px!important;margin:2px 0 0!important}
-[data-card-actions]{padding-top:11px!important;gap:9px!important;margin-top:12px!important}
-[data-prod-rail]{align-items:flex-start!important}
-[data-card-cat]{align-items:flex-start!important;font-size:10.5px!important;letter-spacing:.12em!important;line-height:1.35!important;flex-wrap:wrap!important}
-[data-card-cat]>span:first-child{margin-top:4px}
+[data-card-actions]{padding-top:11px!important;gap:9px!important;margin-top:auto!important}
+[data-prod-rail]{align-items:stretch!important}
+[data-card-cat]{align-items:center!important;font-size:10.5px!important;letter-spacing:.12em!important;line-height:1.35!important;flex-wrap:nowrap!important;white-space:nowrap!important;overflow:hidden}
 [data-card-benefits] li{font-size:15px!important}
 [data-card-benefits] li:nth-child(n+4){display:none!important}
 [data-card-actions]{padding-top:12px!important;gap:11px!important}
@@ -392,7 +391,7 @@ div:has(> [data-rail-nav]){position:relative}
             </div>
             <sc-if value="{{ t.badge }}"><span style="position:absolute;top:13px;left:13px;z-index:3;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#F2EDE6;background:#47181C;padding:6px 11px;border-radius:999px;">{{ t.badge }}</span></sc-if>
             <div data-card-body style="padding:clamp(16px,1.8vw,22px);display:flex;flex-direction:column;gap:9px;flex:1;">
-              <div data-card-cat style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8B5D54;display:flex;align-items:center;gap:7px;"><span style="width:8px;height:8px;border-radius:999px;background:{{ t.catColor }};flex:none;"></span>{{ t.molecules }}</div>
+              <div data-card-cat style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8B5D54;display:flex;align-items:center;gap:7px;white-space:nowrap;"><span style="width:8px;height:8px;border-radius:999px;background:{{ t.catColor }};flex:none;"></span>{{ t.catShort }}</div>
               <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(25px,2vw,32px);line-height:1;color:#47181C;">{{ t.name }}</h3>
               <ul data-card-benefits style="display:flex;flex-direction:column;gap:10px;margin:4px 0 2px;">
                 <sc-for list="{{ t.benefits }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:10px;font-family:'Jost',sans-serif;font-size:16px;line-height:1.45;color:#47181C;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A97A45" stroke-width="2.1" style="flex:none;margin-top:3px;"><polyline points="4 12.5 9.5 18 20 6"/></svg>{{ b }}</li></sc-for>
@@ -1170,7 +1169,7 @@ div:has(> [data-rail-nav]){position:relative}
               </div>
               <sc-if value="{{ t.badge }}"><span style="position:absolute;top:13px;left:13px;z-index:3;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#F2EDE6;background:#47181C;padding:6px 11px;border-radius:999px;">{{ t.badge }}</span></sc-if>
               <div data-card-body style="padding:clamp(16px,1.8vw,22px);display:flex;flex-direction:column;gap:9px;flex:1;">
-                <div data-card-cat style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8B5D54;display:flex;align-items:center;gap:7px;"><span style="width:8px;height:8px;border-radius:999px;background:{{ t.catColor }};flex:none;"></span>{{ t.molecules }}</div>
+                <div data-card-cat style="font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8B5D54;display:flex;align-items:center;gap:7px;white-space:nowrap;"><span style="width:8px;height:8px;border-radius:999px;background:{{ t.catColor }};flex:none;"></span>{{ t.catShort }}</div>
                 <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,1.9vw,30px);line-height:1;color:#47181C;">{{ t.name }}</h3>
                 <ul data-card-benefits style="display:flex;flex-direction:column;gap:10px;margin:4px 0 2px;">
                   <sc-for list="{{ t.benefits }}" as="b" hint-placeholder-count="3"><li style="display:flex;gap:10px;font-family:'Jost',sans-serif;font-size:15.5px;line-height:1.45;color:#47181C;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A97A45" stroke-width="2.1" style="flex:none;margin-top:3px;"><polyline points="4 12.5 9.5 18 20 6"/></svg>{{ b }}</li></sc-for>
@@ -3237,10 +3236,11 @@ class Component extends DCLogic {
       return (ai<0?99:ai)-(bi<0?99:bi);
     });
     const treatments=orderedTreatments.map(t=>{
+      const catShort=String(t.molecules||'').split(' · ')[0];
       const inCart=!!S.cart.find(c=>c.id===t.id);
       const baseProg=t.programsOrder[0]; const baseM=t.plans[baseProg].m;
       const multi=t.programsOrder.length>1;
-      return { ...t, imgData:PH(t.slotId),
+      return { ...t, catShort, imgData:PH(t.slotId),
         priceLabel:'From $'+baseM, priceUnit:'/mo', inCart,
         cta: inCart?'Added to your plan ✓':'Add to my plan',
         sub: multi?('Standard or Microdose'):(t.programsOrder[0]),
