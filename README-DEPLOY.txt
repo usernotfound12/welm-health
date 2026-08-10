@@ -1,6 +1,6 @@
 
 WELM HEALTH — COMPLETE WEBSITE EXPORT
-Exported July 31, 2026
+Exported August 10, 2026
 
 ────────────────────────────────────────────────────────────────
 DEPLOY IN ONE STEP
@@ -13,6 +13,24 @@ this archive is needed for the site to run.
 
 To preview locally, just double-click index.html.
 
+GITHUB PAGES
+────────────────────────────────────────────────────────────────
+1. Create a repository (public, any name).
+2. Upload index.html and faq.html to the root of the default
+   branch. Do not put them in a subfolder.
+3. Settings → Pages → Source: "Deploy from a branch",
+   Branch: main, Folder: / (root). Save.
+4. The site is live at
+   https://YOUR-USERNAME.github.io/YOUR-REPO/
+   within about a minute.
+
+   For a custom domain (welmhealth.com), add it under
+   Settings → Pages → Custom domain, then point a CNAME record at
+   YOUR-USERNAME.github.io with your registrar.
+
+   No build step, no Jekyll config, no .nojekyll file needed —
+   both files are plain static HTML.
+
 ────────────────────────────────────────────────────────────────
 WHAT'S IN THE SITE
 ────────────────────────────────────────────────────────────────
@@ -21,10 +39,13 @@ index.html — the whole site in one file:
   In their words, founders), Shop, all six product pages, protocol
   bundles, the matching assessment, plan drawer + checkout,
   clinical intake, My account, About + founder letter, founder
-  bios, Journal, Contact, State coverage, Privacy Policy,
-  Terms & Conditions, Controlled Substance Policy.
+  bios, the Journal (shelf archive of ten sample editions with the
+  book-opening transition), Contact, State coverage, Privacy
+  Policy, Terms & Conditions, Controlled Substance Policy.
 
-faq.html — standalone FAQ page, linked both ways with index.html.
+faq.html — standalone FAQ page. Reached from "View all questions"
+  inside the FAQ view on index.html, and it links back to index.html.
+  The header and menu FAQ links open the FAQ in place on index.html.
 
 DEEP LINKS (for ad campaigns — point ads at these, not the home page):
   index.html#shop
@@ -74,5 +95,9 @@ STILL TO FINALIZE BEFORE LAUNCH
     is on hold pending a two-vial product photo.
   · Legal pages still carry the source WellSync / Click to Fill
     entity names — swap for Welm Health LLC.
+  · Journal articles are samples written in the Welm clinical voice
+    and are NOT physician-reviewed yet — every edition carries a
+    "Clinically reviewed by Dr. Ryan C. Kelm, MD" line that must be
+    earned before launch, or removed.
   · State coverage is 36 states + Washington, D.C. Update
     this.supportedStates in the source if licensing changes.
